@@ -4,12 +4,12 @@ FROM alpine:latest
 #Install python and pip
 RUN apk add --update py2-pip
 
+# Upgrade pip
+RUN pip install --upgrade pip
+
 # Install required python modules for the flask app
 COPY requirements.txt /usr/src/app/
 RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt
-
-# Update pip
-RUN pip install --upgrade pip
 
 # copy files needed for the app to run
 COPY app.py /usr/src/app/
