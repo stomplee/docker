@@ -1,20 +1,30 @@
+# Use version 2 syntax for docker-compose
 version: '2'
 
+# The section below provisions 3 separate docker containers
+#
+# The service name is just 
+
+    # nginx: # The name that docker will apply as a name for the container ie: nginx_1
+    #     image: <dockerhub image to use>
+    #     ports:
+    #         - <hostport>:<containerport>
+    #     restart: always # Always restart the container whenever changes are made to this file or the host is rebooted
 services:
     nginx:
-        image: nginx:latest
+        image: nginx:1.13-alpine
         ports:
-            - 8002:80
+            - 8000:80
         restart: always
 
     apache:
-        image: httpd:latest
+        image: httpd:2.4-alpine
         ports:
             - 8001:80
         restart: always
 
     tomcat:
-        image: tomcat:latest
+        image: tomcat:8.0-alpine
         ports:
-            - 8000:8080
+            - 8002:8080
         restart: always
