@@ -1,4 +1,6 @@
-ARG  CODE_VERSION=latest
+ARG CODE_VERSION=latest
+
+# Base image to use
 FROM debian:${CODE_VERSION}
 
 # Install required packages
@@ -10,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 ENV TestVariable BobTheCat
 
 # Copy files from local directory to container
-ADD index.html /var/www/html/
+COPY index.html /var/www/html/
 
 # Allow external connections on this port
 EXPOSE 80
